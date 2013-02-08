@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Words</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="main_title">Word Games</string>
+    <string name="c_and_b">Cows and Bulls</string>
+    <string name="title_activity_cow">CowActivity</string>
+    <string name="enter_guess">Enter a Guess</string>
+    <string name="guess_hint">Enter a 5-letter word</string>
+    <string name="submit">Submit</string>
+
+</resources>

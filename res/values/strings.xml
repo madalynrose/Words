@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Words</string>
+    <string name="app_name">5 Letters</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="main_title">Word Games</string>
+    <string name="main_title">Available Games</string>
     <string name="c_and_b">Cows and Bulls</string>
     <string name="title_activity_cow">CowActivity</string>
     <string name="enter_guess">Enter a Guess</string>
     <string name="guess_hint">Enter a 5-letter word</string>
     <string name="submit">Submit</string>
+    <string name="cow_text">Cows</string>
+    <string name="bull_text">Bulls</string>
+    <string name="cow_score">0</string>
+    <string name="bull_score">0</string>
+    <string name="question_mark">\?</string>
+    <string name="previous">Previous Guesses</string>
 
 </resources>

@@ -6,12 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -24,25 +19,36 @@ public class CowView extends View {
 	/*
 	 * The word the player is guessing
 	 */
-	private String word;
+	private String word = null;
 	
 	/*
 	 * The word the player has guessed
 	 */
-	private String guess;
+	private String guess = null;
 	/*
 	 * The number of bulls in current guess
 	 */
 	private int bulls = 0;
+	public int getBulls() {
+		return bulls;
+	}
+
+	public void setBulls(int bulls) {
+		this.bulls = bulls;
+	}
+
 	/*
 	 * The number of cows in current guess
 	 */
 	private int cows = 0;
-	/*
-	 * The paint to draw cow and bull count
-	 */
-	private Paint paint;
 	
+	public int getCows() {
+		return cows;
+	}
+
+	public void setCows(int cows) {
+		this.cows = cows;
+	}	
 	
 	public CowView(Context context){
 		super(context);
@@ -60,8 +66,11 @@ public class CowView extends View {
 	}
 	
 	private void init(Context context){
+		cows = 0;
+		bulls = 0;
+		guess = null;
+		word = null;
 		wordBank = new ArrayList<String>();
-		paint = new Paint();
 		try {
 				InputStream file = context.getAssets().open("5-letter.txt");
 				InputStreamReader inputreader = new InputStreamReader(file);
@@ -115,12 +124,13 @@ public class CowView extends View {
 	{
 		boolean found[] = {false, false, false, false, false};
 		boolean usedGuess[] = {false, false, false, false, false};
-		cows = bulls = 0;
+		setCows(0);
+		setBulls(0);
 		for(int i=0; i<5;i++)
 		{
 			if(word.charAt(i)==guess.charAt(i))
 			{
-				bulls++;
+				setBulls(getBulls()+1);
 				found[i] = true;
 				usedGuess[i] = true;
 			}
@@ -133,7 +143,7 @@ public class CowView extends View {
 				{
 					if(!usedGuess[k]&&word.charAt(j)==guess.charAt(k))
 					{
-						cows++;
+						setCows(getCows() + 1);
 						found[j] = true;
 						usedGuess[k] = true;
 						break;
@@ -141,36 +151,10 @@ public class CowView extends View {
 				}
 			}
 		}
-		if(bulls==5)
+		if(getBulls()==5)
 		{
         	selectWord();
 		}
 	}
-	
-	/**
-     * Handle a draw event
-     * @param canvas canvas to draw on.
-     */
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Style.FILL);
-        canvas.drawPaint(paint);
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(30);
-        if(bulls==5)
-        {
-        	paint.setTextSize(40);
-        	canvas.drawText("You win! New Game Started!", 10, 40, paint);
-        }
-        else
-        {
-        	canvas.drawText("Cows: "+cows, 10, 40, paint);
-        	canvas.drawText("Bulls: "+bulls, 10, 85, paint);
-        }
-		invalidate();
-
-    }
 
 }

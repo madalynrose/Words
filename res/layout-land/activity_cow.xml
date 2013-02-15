@@ -3,34 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Green"
-    android:orientation="vertical"
-    android:weightSum="1"
+    android:baselineAligned="false"
     tools:context=".CowActivity" >
 
     <LinearLayout
-        android:id="@+id/guessLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:layout_weight="0.7"
+        android:id="@+id/linearLayout1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:layout_weight="0.75"
         android:background="@android:color/white"
         android:gravity="center"
+        android:onClick="onHelp"
         android:orientation="vertical" >
 
         <EditText
             android:id="@+id/editGuess"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="46dp"
             android:ems="10"
             android:hint="@string/guess_hint"
             android:inputType="text|textCapCharacters"
-            android:maxLength="5" >
+            android:maxLength="5" />
 
-            <requestFocus />
-        </EditText>
-
-        <RelativeLayout
+         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
@@ -40,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
                 android:onClick="onPreviousGuesses"
                 android:text="@string/previous" />
 
@@ -53,26 +50,34 @@
                 android:text="@string/submit" />
 
         </RelativeLayout>
+
+        <edu.msu.cse.parke261.words.CowView
+            android:id="@+id/cowView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3" >
-     
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentLeft="true"
-           android:layout_below="@+id/cowView"
-           android:orientation="horizontal" >
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:orientation="vertical" >
 
-           <TextView
-               android:id="@+id/cows"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/cow_text"
-               android:textSize="25sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/cows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cow_text"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/cow_score"
@@ -89,12 +94,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal" >
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/bulls"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/bull_text"
                 android:textSize="25sp" />
@@ -111,7 +116,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/help"
+            android:id="@+id/helpButton"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,12 +124,6 @@
             android:layout_alignParentRight="true"
             android:onClick="onHelp"
             android:text="@string/question_mark" />
-
-        <edu.msu.cse.parke261.words.CowView
-            android:id="@+id/cowView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
 
     </RelativeLayout>
 

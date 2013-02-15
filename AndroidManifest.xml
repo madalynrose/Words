@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name="edu.msu.cse.parke261.words.CowActivity"
-            android:label="@string/title_activity_cow" >
+            android:label="@string/title_activity_cow" 
+            android:windowSoftInputMode="stateUnchanged">
         </activity>
     </application>
 

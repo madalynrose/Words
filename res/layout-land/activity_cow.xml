@@ -26,28 +26,39 @@
             android:inputType="text|textCapCharacters"
             android:maxLength="5" />
 
-         <RelativeLayout
+<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/buttonPrevious"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp"
-                android:onClick="onPreviousGuesses"
-                android:text="@string/previous" />
 
             <Button
                 android:id="@+id/buttonSubmit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/buttonPrevious"
                 android:onClick="onSubmit"
-                android:text="@string/submit" />
+                android:text="@string/submit"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/buttonLetters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:onClick="onLetters"
+                android:text="@string/letters"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/buttonPrevious"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/buttonLetters"
+                android:onClick="onPreviousGuesses"
+                android:text="@string/previous"
+                android:textSize="15sp" />
 
         </RelativeLayout>
 

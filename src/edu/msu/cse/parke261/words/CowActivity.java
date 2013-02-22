@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 
 public class CowActivity extends Activity {
 
@@ -49,6 +50,14 @@ public class CowActivity extends Activity {
      */
     private ArrayList<String> guesses = null;
     
+    
+    /**
+     * whether letters have been discarded
+     */
+    private boolean used[] = null;
+    
+    private static int USED_LETTERS = 1;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,9 +73,13 @@ public class CowActivity extends Activity {
         bull_score.setText("0");
         setTitle("Cows and Bulls");
         guesses = new ArrayList<String>();
+        used = new boolean[26];
+        for(int i=0;i<used.length;i++)
+        {
+        	used[i] = false;
+        }
         canClick = false;
-	}
-	
+	}	
 	public void onSubmit(View view){
 		guess = guessEdit.getText().toString();
 		guessEdit.setText("");
@@ -163,6 +176,7 @@ public class CowActivity extends Activity {
 	  savedInstanceState.putString("currentEditText", guessEdit.getText().toString());
 	  savedInstanceState.putStringArrayList("guesses", guesses);
 	  savedInstanceState.putBoolean("canClick",canClick);
+	  savedInstanceState.putBooleanArray("used",used);
 	  // etc.
 	}
 
@@ -180,6 +194,7 @@ public class CowActivity extends Activity {
 	  guesses = savedInstanceState.getStringArrayList("guesses");
 	  canClick = savedInstanceState.getBoolean("canClick");
 	  prev.setClickable(canClick);
+	  used = savedInstanceState.getBooleanArray("used");
 	}
 	/*@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -229,11 +244,11 @@ public class CowActivity extends Activity {
 		// set dialog message
 		alertDialogBuilder
 			.setMessage("At the start of the game, a 5-letter word will be chosen by the game. It is your job to guess the word. " +
-					"When you guess a word, the game will give you back the number of 'Cows' (letters that are in the chosen word, but are in the wrong spot in your guess)" +
-					"and the number of 'Bulls' (letters that are in the chosen word and are in the correct spot in your guess)." +
-					"Use these as clues to make guesses until you get the word right")
+					"When you guess a word, the game will give you back the number of 'Cows' (letters that are in the chosen word, but are in the wrong spot in your guess) " +
+					"and the number of 'Bulls' (letters that are in the chosen word and are in the correct spot in your guess). " +
+					"Use these as clues to make guesses until you get the word right.")
 			.setCancelable(false)
-			.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+			.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
@@ -248,5 +263,20 @@ public class CowActivity extends Activity {
 			alertDialog.show();
 		
 	}
+	
+	public void onLetters(View view){
+		Intent intent = new Intent(getBaseContext(), LettersActivity.class);
+		intent.putExtra("used", used);
+		startActivityForResult(intent, USED_LETTERS);
+	}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data.getExtras().containsKey("used")){
+            used = data.getBooleanArrayExtra("used"); 
+        }
+
+    }
 
 }

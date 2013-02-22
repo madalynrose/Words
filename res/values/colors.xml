@@ -4,4 +4,5 @@
         <color name="Blue">#0a67a3</color>
         <color name="Yellow">#ff8e00</color>
         <color name="Orange">#ff4100</color>
+        <color name="transparent">#90000000</color>
     </resources>

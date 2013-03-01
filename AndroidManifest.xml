@@ -29,8 +29,12 @@
         </activity>
         <activity
             android:name="edu.msu.cse.parke261.words.LettersActivity"
-            android:theme="@style/Theme.D1NoTitleDim"
-            android:label="@string/title_activity_letters" >
+            android:label="@string/title_activity_letters"
+            android:theme="@style/Theme.D1NoTitleDim" >
+        </activity>
+        <activity
+            android:name="edu.msu.cse.parke261.words.DotsActivity"
+            android:label="@string/title_activity_dots" >
         </activity>
     </application>
 

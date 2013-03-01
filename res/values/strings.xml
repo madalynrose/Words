@@ -47,5 +47,7 @@
     <string name="title_activity_letters">LettersActivity</string>
     <string name="done">Done</string>
     <string name="letter_instructions">Eliminate letters you know are not in the word</string>
+    <string name="title_activity_dots">DotsActivity</string>
+    <string name="dots">Dots</string>
 
 </resources>

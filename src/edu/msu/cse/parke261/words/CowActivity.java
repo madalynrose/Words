@@ -56,7 +56,7 @@ public class CowActivity extends Activity {
      */
     private boolean used[] = null;
     
-    private static int USED_LETTERS = 1;
+    protected static int USED_LETTERS = 1;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +73,12 @@ public class CowActivity extends Activity {
         bull_score.setText("0");
         setTitle("Cows and Bulls");
         guesses = new ArrayList<String>();
+        canClick = false;
         used = new boolean[26];
         for(int i=0;i<used.length;i++)
         {
         	used[i] = false;
         }
-        canClick = false;
 	}	
 	public void onSubmit(View view){
 		guess = guessEdit.getText().toString();
@@ -94,10 +94,9 @@ public class CowActivity extends Activity {
 				alertDialogBuilder
 					.setMessage("Please make sure your guess is 5 letters long")
 					.setCancelable(false)
-					.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+					.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
 							
 						}
 					  });
@@ -128,6 +127,7 @@ public class CowActivity extends Activity {
 					        bull_score.setText("0");
 					        guesses = new ArrayList<String>();
 					        canClick = false;
+					        used = new boolean[26];
 							onRestart();
 						}
 					  })
@@ -159,7 +159,6 @@ public class CowActivity extends Activity {
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -177,7 +176,6 @@ public class CowActivity extends Activity {
 	  savedInstanceState.putStringArrayList("guesses", guesses);
 	  savedInstanceState.putBoolean("canClick",canClick);
 	  savedInstanceState.putBooleanArray("used",used);
-	  // etc.
 	}
 
 	@Override
@@ -222,7 +220,6 @@ public class CowActivity extends Activity {
 			.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					
 				}
 			  });
@@ -251,7 +248,6 @@ public class CowActivity extends Activity {
 			.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					
 				}
 			  });
@@ -265,13 +261,13 @@ public class CowActivity extends Activity {
 	}
 	
 	public void onLetters(View view){
-		Intent intent = new Intent(getBaseContext(), LettersActivity.class);
+		Intent intent = new Intent(this, LettersActivity.class);
 		intent.putExtra("used", used);
 		startActivityForResult(intent, USED_LETTERS);
 	}
+	
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
         if(data.getExtras().containsKey("used")){
             used = data.getBooleanArrayExtra("used"); 

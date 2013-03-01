@@ -14,15 +14,14 @@ public class MainActivity extends Activity {
         setTitle("Five Letters");
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }*/
     
 	public void onStartCows(View view) {
 		Intent intent = new Intent(this, CowActivity.class);
+		startActivity(intent);
+	}
+	
+	public void onStartDots(View view){
+		Intent intent = new Intent(this, DotsActivity.class);
 		startActivity(intent);
 	}
     

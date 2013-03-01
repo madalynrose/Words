@@ -194,12 +194,6 @@ public class CowActivity extends Activity {
 	  prev.setClickable(canClick);
 	  used = savedInstanceState.getBooleanArray("used");
 	}
-	/*@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_cow, menu);
-		return true;
-	}*/
 	
 	public void onPreviousGuesses(View view){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(cowView.getContext());

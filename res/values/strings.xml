@@ -50,5 +50,7 @@
     <string name="title_activity_anagram">AnagramActivity</string>
     <string name="scrambled">XXXXX</string>
     <string name="scramble_hint">Guess the Scrambled Word</string>
+    <string name="title_activity_dots">DotsActivity</string>
+    <string name="dots">Dots</string>
 
 </resources>

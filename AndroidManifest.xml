@@ -35,6 +35,10 @@
         <activity
             android:name="edu.msu.cse.parke261.words.AnagramActivity"
             android:label="@string/title_activity_anagram" >
+		</activity>
+		<activity
+            android:name="edu.msu.cse.parke261.words.DotsActivity"
+            android:label="@string/title_activity_dots" >
         </activity>
     </application>
 

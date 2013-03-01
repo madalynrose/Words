@@ -5,31 +5,51 @@
     android:background="@color/Blue"
     tools:context=".MainActivity" >
 
-    <FrameLayout
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:background="@android:color/white" >
 
-        <Button
-            android:id="@+id/CowsButton"
+        <LinearLayout
+            android:id="@+id/games"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="84dp"
-            android:onClick="onStartCows"
-            android:text="@string/c_and_b" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/mainText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="@string/main_title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            <Button
+                android:id="@+id/CowsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="84dp"
+                android:onClick="onStartCows"
+                android:text="@string/c_and_b" />
 
-    </FrameLayout>
+            <Button
+                android:id="@+id/DotsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onStartDots"
+                android:text="@string/dots" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/RelativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:onClick="onDotsClicked"
+        android:text="@string/main_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
